@@ -185,7 +185,7 @@ M2 =   11.40175
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Many combinations of &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; are provided in scientific litterature, yielding various accuracies for estimating &lt;span class="math"&gt;\(M\)&lt;/span&gt;. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil.&lt;/p&gt;
 &lt;p&gt;Further reading about this subject can be suggested here:&lt;/p&gt;
-&lt;p&gt;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=2&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0CCcQFjAB&amp;amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;amp;bvm=bv.72676100,d.bGQ&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=2&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0CCcQFjAB&amp;amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;amp;bvm=bv.72676100,d.bGQ"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
