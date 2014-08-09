@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>python4enlightening - Articles by junilyd</title>
+  <title>Automatic Blog Title</title>
   <meta name="author" content="junilyd">
 
   <link href="http://junilyd.github.io/atom.xml" type="application/atom+xml" rel="alternate"
@@ -1790,59 +1790,145 @@ jQuery(document).ready(function($) {
 </ul></nav>
   <div id="main">
     <div id="content">
-<div class="blog-index">
-  		<article>
+<div>
+  <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">
-        <a href="http://junilyd.github.io/blog/2014/08/09/automatic-blog-title/">Automatic Blog Title</a>
-      </h1>
+      <h1 class="entry-title">Automatic Blog Title</h1>
       <p class="meta"><time datetime="2014-08-09T17:44:00" pubdate>Aug 09, 2014</time></p>
 </header>
 
   <div class="entry-content"><p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>People often ask me: How can I can build a blog similar to this one? What tools are you using? What is IPython notebook role in your blog?</p>
-<p>If you are familiar with <a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a> and want to jump ahead before reading the whole post, check out the blog code <a href="https://github.com/ocefpaf/python4oceanographers">repository ...</a></p></div></p></div>
-  <footer>
-    <a rel="full-article" href="http://junilyd.github.io/blog/2014/08/09/automatic-blog-title/">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://junilyd.github.io/blog/2014/08/08/a-root-of-less-evil/">A root of less evil</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-08T14:56:00" pubdate>Aug 08, 2014</time></p>
-</header>
+<p>If you are familiar with <a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a> and want to jump ahead before reading the whole post, check out the blog code <a href="https://github.com/ocefpaf/python4oceanographers">repository</a> and have fun.</p>
+<p>If you never used a static site generator like Pelican before keep reading.</p>
+<h3 id="blog-environment">Blog environment</h3>
+<p>Your Blog will be around a while (hopefully), but most of the tools used to build it are evolving and changing very quickly. In order to avoid future headaches I use a distinguish work environment every time I create a new web-page/blog. &quot;Freezing&quot; the tools I use for that particular project.</p>
+<p>To accomplish that I use <a href="http://www.virtualenv.org/en/latest/">virtualenv</a> to compartmentalize the environments, and <a href="http://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a> to manage the virtualenvs.</p>
+<p>You can install both using your distro package manager (or with any other python package installer out there: easy_install, pip, conda etc). In my OpenSUSE box I just use zypper,</p>
+<pre><code>sudo zypper in python-virtualenvwrapper</code></pre>
+<p>and all the dependencies will be installed as well.</p>
+<p><code>virtualenvwrapper</code> extends <code>virtualenv</code> with the several commands, but I use just these three:</p>
+<ul>
+<li><code>mkvirtualenv</code> to create a new virtualenv;</li>
+<li><code>workon</code> to enter the virtualenv;</li>
+<li><code>deactivate</code> to exit the virtualenv.</li>
+</ul>
+<p>The command to create the <strong>blog</strong> environment is</p>
+<pre><code>mkvirtualenv --distribute --no-site-packages blog</code></pre>
+<p>and to enter the environment,</p>
+<pre><code>workon blog</code></pre>
+<p>My environment is &quot;frozen&quot; following this <a href="https://raw.github.com/ocefpaf/python4oceanographers/master/content/downloads/code/requirements.txt">requirements.txt</a>, to get an environment identical to mine you need to download the file and install all the modules listed in there with pip:</p>
+<pre><code>pip install -r requirements.txt</code></pre>
+<p>Note that you do not need to be root to install inside the <code>virtualenv</code>. However, you <strong>do</strong> need to be inside the <code>virtualenv</code>.</p>
+<p>Check if everything installed correctly by typing <code>pip freeze</code> and comparing with the original requirements.txt.</p>
+<p>The blog environment is almost ready. There are only two other dependencies missing the <a href="https://github.com/jakevdp/pelican-octopress-theme.git">theme</a> and the <a href="https://github.com/getpelican/pelican-plugins.git">plug-ins</a>. Download them using <code>git</code>:</p>
+<pre><code>git clone https://github.com/jakevdp/pelican-octopress-theme.git
+git clone https://github.com/getpelican/pelican-plugins.git</code></pre>
+<p>There are several other themes and plug-ins for pelican. I suggest you check them out. Just be aware that, if you are not using the octopress-theme, you must insert the <code>_nb_header.html</code> manually inside your theme style. That is necessary to display the IPython notebooks properly. More information on how to do this in <a href="http://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican">Jake's blog</a>.</p>
+<h3 id="the-blog">The blog</h3>
+<p>Now there are two options to proceed:</p>
+<ol style="list-style-type: decimal">
+<li>Clone my current blog and start from there;</li>
+<li>Start a new one using <a href="http://docs.getpelican.com/en/3.1.1/getting_started.html">pelican-quickstart</a>.</li>
+</ol>
+<p>If you choose option 2 to start from scratch I recommend taking a look at both <code>publishconf.py</code> and <code>pelicanconf.py</code> from my repository. Here I will demonstrated the first option.</p>
+<pre><code>git clone https://github.com/ocefpaf/python4oceanographers</code></pre>
+<p>Now change into the <code>python4oceanographers</code> directory, modify <code>pelicanconf.py</code> <code>path</code> variable to point to where you cloned <code>pelican-octopress-theme</code> and <code>pelican-plugins</code>.</p>
+<pre><code>path = os.path.join(os.environ.get(&#39;HOME&#39;), &#39;BLOG&#39;)
+THEME = &#39;%s/pelican-octopress-theme&#39; % path
+PLUGIN_PATH = &#39;%s/pelican-plugins&#39; % path</code></pre>
+<h3 id="compiling-the-blog">Compiling the blog</h3>
+<p>You can use <code>make clean</code> (or manually delete the output folder) to get a clean slate, and <code>make html</code> to generate a new output folder.</p>
+<p>If everything is OK enter the <code>output</code> folder and type <code>python -m SimpleHTTPServer 8080</code> to start serving the blog locally. Open your browser at <a href="http://localhost:8080/">http://localhost:8080</a> and check the results.</p>
+<p>So far you should have a clone of my current blog.</p>
+<h3 id="the-blog-work-flow">The blog work flow</h3>
+<p>Pelican posts are just Markdown files with a date and a subject like <code>2013-12-23-blogging.md</code>. If you look inside my files you will notice that I just write a minimal header like,</p>
+<pre><code>title: Building this blog
+date:  2013-12-23 12:34
+comments: true
+slug: blog
 
-  <div class="entry-content"><p>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Since it sometimes is required to calculate the square root of some number. This job seems actually quite easy by simply solving the equation for the square root of 2. <span class="math">\[x^2 - 2 = 0 \Rightarrow \sqrt{2} \approx 1.41\]</span>. However, when we need to define how a simple computer ...</p></div></p></div>
-  <footer>
-    <a rel="full-article" href="http://junilyd.github.io/blog/2014/08/08/a-root-of-less-evil/">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Test of uploading posts</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-08T09:42:00" pubdate>Aug 08, 2014</time></p>
-</header>
+{% notebook blogging.ipynb cells[1:] %}</code></pre>
+<p>and the actual post is an IPython notebook <a href="http://nbviewer.ipython.org/url/ocefpaf.github.com/python4oceanographers/downloads/notebooks/bloggin.ipynb">file</a> converted from JSON to HTML using the <a href="https://github.com/jakevdp/pelican-plugins/blob/liquid_tags/liquid_tags/notebook.py">liquid tags plug-in</a>.</p>
+<p>It is time to create your own posts. Just delete all the Markdown and ipynb files inside the content folder, create a new Markdown and corresponding ipynb file for your new post. Keep using <code>make html</code>+<code>python -m SimpleHTTPServer 8080</code> to visualize the final format in your browser.</p>
+<p>Once you are satisfied with the results use <code>make deploy</code> to publish at github. (Remember that you must edit the <code>Makefile</code> first to point to your github.io page.)</p>
+<p>If you are interested in alternatives to blog with IPython notebooks check:</p>
+<ul>
+<li><a href="http://www.damian.oquanta.info/">http://www.damian.oquanta.info/</a></li>
+<li><a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html</a></li>
+<li><a href="http://danielfrg.github.io/blog/2013/03/08/pelican-ipython-notebook-plugin/">http://danielfrg.github.io/blog/2013/03/08/pelican-ipython-notebook-plugin/</a></li>
+</ul>
+<p>Now go ahead and start your own blog! Create a <a href="http://pages.github.com/">github repository for your page</a>, adapt the configuration to your needs and Good Luck!</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[2]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</pre></div>
 
-  <div class="entry-content">
-<p>A few weeks ago, Fernando Perez, the creator of IPython, wrote a <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">post</a> about blogging with IPython notebooks. I decided to take a stab at making this work in Octopress.</p>
-<p>I started by following Fernando's outline: I first went to <a href="http://github.com/ipython/nbconvert">http://github.com/ipython/nbconvert</a> and obtained the current version of the notebook converter. Running <code>nbconvert.py -f blogger-html filename.ipynb</code> produces a separate html and header file with the notebook content. I inserted the stylesheet info into my header (in octopress, the default location is <code>source/_includes/custom/head.html</code>) and copied the html directly into my post.</p>
-<p>I immediately encountered a problem. <code>nbconvert</code> uses global CSS classes and style markups, and some of these (notably the &quot;hightlight&quot; class and the <code>&lt;pre&gt;</code> tag formatting) conflict with styles defined in my octopress theme. The result was that every post in my blog ended up looking like an ugly hybrid of octopress and an ipython notebook. Not very nice.</p>
-<p>So I did some surgery. Admittedly, this is a terrible hack, but the following code takes the files output by nbconvert, slices them up, and creates a specific set of CSS classes for the notebook markup, such that there's no longer a conflict with the native octopress styles (you can download this script <a href="http://jakevdp.github.com/downloads/code/convert_notebook.py">here</a>): </div>
-  <footer>
-    <a rel="full-article" href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Read On &crarr;</a>
-  </footer>
-  		</article>
-<div class="pagination">
+</div>
+</div>
 
-  <br />
-</div></div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[2]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+<div class="output_html rendered_html">
+
+<small>
+<p> This post was written as an IPython notebook.  It is available for
+<a href="http://ocefpaf.github.com/python4oceanographers/downloads/
+notebooks/2013-12-23-blogging.ipynb">download</a> or as a static
+<a href="http://nbviewer.ipython.org/url/ocefpaf.github.com/
+python4oceanographers/downloads/notebooks/2013-12-23-blogging.ipynb">html</a>.</p>
+<p></p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span
+xmlns:dct="http://purl.org/dc/terms/"
+property="dct:title">python4oceanographers</span> by <a
+xmlns:cc="http://creativecommons.org/ns#" href="http://ocefpaf.github.io/"
+property="cc:attributionName" rel="cc:attributionURL">Filipe Fernandes</a> is
+licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+Attribution-ShareAlike 4.0 International License</a>.<br />Based on a work at <a
+xmlns:dct="http://purl.org/dc/terms/" href="http://ocefpaf.github.io/"
+rel="dct:source">http://ocefpaf.github.io/</a>.
+ 
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">junilyd</span>
+  </span>
+<time datetime="2014-08-09T17:44:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://junilyd.github.io/blog/2014/08/09/automatic-blog-title/" data-via="junilyd" data-counturl="http://junilyd.github.io/blog/2014/08/09/automatic-blog-title/" >Tweet</a>
+  <div class="g-plusone" data-size="medium"></div>
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
@@ -1894,6 +1980,9 @@ jQuery(document).ready(function($) {
 </p></footer>
 	<script type="text/javascript">
 	  var disqus_shortname = 'python4enlightenment';
+          var disqus_identifier = '/blog/2014/08/09/automatic-blog-title/';
+          var disqus_url = 'http://junilyd.github.io/blog/2014/08/09/automatic-blog-title/';
+          var disqus_title = 'Automatic Blog Title';
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
