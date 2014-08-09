@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-08-09T19:34:00-03:00</updated><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" rel="alternate"></link><updated>2014-08-09T19:34:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/a-root-less-evil/</id><summary type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-08-09T19:44:00-03:00</updated><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" rel="alternate"></link><updated>2014-08-09T19:44:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/a-root-less-evil/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. (insert link here). I finished my B.Sc.EE project this semster. The project theme was embedded signal processing, and we designed and implemented a GFSK-Demodulator in a fixed point DSP. Therefore I came across some interesting algorithms for approximation of the square root in fixed point arithmetic. This is obvious subject for first blog post here, where I will demonstrate these in Python, starting with Newtons Method.&lt;/p&gt;
-&lt;p&gt;Newtons Method is an iterative approach as seen here&lt;/p&gt;
+&lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. (insert link here). I finished my B.Sc.EE project this semster. The project theme was embedded signal processing with the design and implementation of a GFSK-Demodulator, for satellite communication, in a fixed point DSP. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for first blog post here, where I will demonstrate these in Python, starting with Newtons Method.&lt;/p&gt;
+&lt;p&gt;Newtons Method is an iterative approach, with an initial guess &lt;span class="math"&gt;\(s\)&lt;/span&gt; as seen here&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[ s = \frac{1}{2}(s + x/s)\]&lt;/span&gt; , where is the number from which it is desired to calculate the square root.&lt;/p&gt;
+&lt;p&gt;As an example, if we want to calculate the square root of 25 we can make a llop like this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[9]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;25.&lt;/span&gt;
+&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;
+&lt;span class="n"&gt;kmax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="n"&gt;tol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.e-14&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kmax&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;After &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; iterations, s = &lt;/span&gt;&lt;span class="si"&gt;%20.15f&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="vbox output_wrapper"&gt;
+&lt;div class="output vbox"&gt;
+
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
+&lt;pre&gt;
+After 1 iterations, s =   13.000000000000000
+After 2 iterations, s =    7.461538461538462
+After 3 iterations, s =    5.406026962727994
+After 4 iterations, s =    5.015247601944898
+After 5 iterations, s =    5.000023178253949
+After 6 iterations, s =    5.000000000053722
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_pyerr"&gt;
+&lt;pre&gt;
+&lt;span class="ansicyan"&gt;  File &lt;/span&gt;&lt;span class="ansigreen"&gt;&amp;quot;&amp;lt;ipython-input-9-6aecd3f1a4d2&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="ansicyan"&gt;, line &lt;/span&gt;&lt;span class="ansigreen"&gt;8&lt;/span&gt;
+&lt;span class="ansired"&gt;    return s&lt;/span&gt;
+&lt;span class="ansired"&gt;SyntaxError&lt;/span&gt;&lt;span class="ansired"&gt;:&lt;/span&gt; &amp;apos;return&amp;apos; outside function
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
