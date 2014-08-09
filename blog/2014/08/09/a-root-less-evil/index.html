@@ -1794,7 +1794,7 @@ jQuery(document).ready(function($) {
   <article class="hentry" role="article">
 <header>
       <h1 class="entry-title">A root less evil</h1>
-      <p class="meta"><time datetime="2014-08-09T21:57:00" pubdate>Aug 09, 2014</time></p>
+      <p class="meta"><time datetime="2014-08-09T22:43:00" pubdate>Aug 09, 2014</time></p>
 </header>
 
   <div class="entry-content"><p>
@@ -1893,12 +1893,12 @@ After 6 iterations, s =    5.000000000000000
 <p>Then the square root approximation algorithm has reached the correct <span class="math">\(5\)</span> already after 4 iterations, which is quite fair.</p>
 <p>Another situation is when we have a fixed point machine for implementing such an algorithm. In such a situation we have to work primarily with numbers which is a power of <span class="math">\(2\)</span>. Any mulitplication or division with a power of two is normally done freely in since it can be done by a shifting the binary registers.</p>
 <p>When calculating the complex magnitude <span class="math">\(M = \sqrt{I^2 + Q^2}\)</span> as described above a similar procedure can be utilized. To approximate the square root operation, the Binary-Shift Magitude Estimation can be used to estimate <span class="math">\(M\)</span>.</p>
-<p><span class="math">\[ &amp;&amp;M \approx \sqrt{A\text{M}_{ax} + B\text{M}_{in}}\]</span><br />where <span class="math">\(A=\frac{15}{16}, B = \frac{15}{32}\)</span> which is similar sizes compared to Newtons Method</p>
+<p><span class="math">\[ M \approx A\text{M}_{ax} + B\text{M}_{in}\]</span><br />where <span class="math">\(A=\frac{15}{16}, B = \frac{15}{32}\)</span> which is similar sizes compared to Newtons Method</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[76]:
+In&nbsp;[132]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mf">3.</span>
@@ -1942,19 +1942,21 @@ M =   11.40175
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[108]:
+In&nbsp;[154]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">J</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="n">J4</span><span class="o">=</span><span class="n">J</span><span class="o">&gt;&gt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">J5</span><span class="o">=</span><span class="n">J</span><span class="o">&gt;&gt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">I4</span><span class="o">=</span><span class="n">I</span><span class="o">&gt;&gt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">I5</span><span class="o">=</span><span class="n">I</span><span class="o">&gt;&gt;</span><span class="mi">5</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="n">I</span> <span class="o">&lt;</span> <span class="n">J</span><span class="p">:</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span><span class="o">-</span><span class="n">I4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">J</span><span class="o">-</span><span class="n">J4</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">M</span>
+<span class="k">if</span> <span class="n">I</span> <span class="o">&gt;</span> <span class="n">J</span><span class="p">:</span>
+  <span class="c"># M = 15/16 I + 15/32 J</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span><span class="o">-</span><span class="n">I4</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">J</span><span class="o">-</span><span class="n">J5</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span> <span class="n">J</span><span class="o">-</span><span class="n">J</span><span class="o">&gt;&gt;</span><span class="mi">5</span> <span class="o">+</span> <span class="n">I</span><span class="o">-</span><span class="n">I</span><span class="o">&gt;&gt;</span><span class="mi">4</span> <span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;M = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M</span>
+  <span class="c"># M = 15/16 J + 15/32 I</span>
+    <span class="k">print</span> <span class="p">((</span><span class="n">I</span><span class="o">-</span><span class="n">I5</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">J</span><span class="o">-</span><span class="n">J4</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">I</span><span class="o">-</span><span class="n">I5</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;M = </span><span class="si">%10.0f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M</span>
 <span class="n">M2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;M2 = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M2</span>
 </pre></div>
@@ -1969,8 +1971,8 @@ In&nbsp;[108]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-14
-M =   14.00000
+1
+M =         12
 M2 =   11.40175
 
 </pre>
@@ -2046,7 +2048,7 @@ In&nbsp;[]:
   <span class="byline author vcard">
     Posted by <span class="fn">junilyd</span>
   </span>
-<time datetime="2014-08-09T21:57:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
+<time datetime="2014-08-09T22:43:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
   <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" data-via="junilyd" data-counturl="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" >Tweet</a>
   <div class="g-plusone" data-size="medium"></div>
     <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
