@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>python4enlightening</title>
+  <title>A root less evil</title>
   <meta name="author" content="junilyd">
 
   <link href="http://junilyd.github.io/atom.xml" type="application/atom+xml" rel="alternate"
@@ -1790,12 +1790,10 @@ jQuery(document).ready(function($) {
 </ul></nav>
   <div id="main">
     <div id="content">
-<div class="blog-index">
-  		<article>
+<div>
+  <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">
-        <a href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/">A root less evil</a>
-      </h1>
+      <h1 class="entry-title">A root less evil</h1>
       <p class="meta"><time datetime="2014-08-09T18:38:00" pubdate>Aug 09, 2014</time></p>
 </header>
 
@@ -1825,32 +1823,74 @@ In&nbsp;[3]:
     <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mf">0.</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">0.</span>
     <span class="k">elif</span> <span class="n">x</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">:</span>
-        <span class="k">print ...</span></pre></div></div></div></div></p></div>
-  <footer>
-    <a rel="full-article" href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Test of uploading posts</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-08T09:42:00" pubdate>Aug 08, 2014</time></p>
-</header>
+        <span class="k">print</span> <span class="s">&#39;*** Error, x must be nonnegative&#39;</span>
+        <span class="k">return</span> <span class="n">nan</span>
+    <span class="k">assert</span> <span class="n">x</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">,</span><span class="s">&quot;Unrecognized input&quot;</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mf">5.</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.e-14</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;Before iteration </span><span class="si">%s</span><span class="s">, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">s0</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">delta_s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">s0</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta_s</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;After </span><span class="si">%s</span><span class="s"> iterations, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
 
-  <div class="entry-content">
-<p>A few weeks ago, Fernando Perez, the creator of IPython, wrote a <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">post</a> about blogging with IPython notebooks. I decided to take a stab at making this work in Octopress.</p>
-<p>I started by following Fernando's outline: I first went to <a href="http://github.com/ipython/nbconvert">http://github.com/ipython/nbconvert</a> and obtained the current version of the notebook converter. Running <code>nbconvert.py -f blogger-html filename.ipynb</code> produces a separate html and header file with the notebook content. I inserted the stylesheet info into my header (in octopress, the default location is <code>source/_includes/custom/head.html</code>) and copied the html directly into my post.</p>
-<p>I immediately encountered a problem. <code>nbconvert</code> uses global CSS classes and style markups, and some of these (notably the &quot;hightlight&quot; class and the <code>&lt;pre&gt;</code> tag formatting) conflict with styles defined in my octopress theme. The result was that every post in my blog ended up looking like an ugly hybrid of octopress and an ipython notebook. Not very nice.</p>
-<p>So I did some surgery. Admittedly, this is a terrible hack, but the following code takes the files output by nbconvert, slices them up, and creates a specific set of CSS classes for the notebook markup, such that there's no longer a conflict with the native octopress styles (you can download this script <a href="http://jakevdp.github.com/downloads/code/convert_notebook.py">here</a>): </div>
-  <footer>
-    <a rel="full-article" href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Read On &crarr;</a>
-  </footer>
-  		</article>
-<div class="pagination">
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+    <span class="kn">import</span> <span class="nn">mysqrt</span>
 
-  <br />
-</div></div>
+    <span class="n">xvalues</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mf">1.e-4</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvalues</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Testing with x = </span><span class="si">%20.15e</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">mysqrt</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">s_numpy</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;s = </span><span class="si">%20.15e</span><span class="s">,   numpy.sqrt = </span><span class="si">%20.15e</span><span class="s">&#39;</span> \
+                <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s_numpy</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="n">s_numpy</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.e-14</span><span class="p">,</span> \
+                <span class="s">&#39;Disagree for x = </span><span class="si">%20.15e</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb">
+</pre></div>
+
+</div>
+</div>
+
+</div></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">junilyd</span>
+  </span>
+<time datetime="2014-08-09T18:38:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" data-via="junilyd" data-counturl="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" >Tweet</a>
+  <div class="g-plusone" data-size="medium"></div>
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
@@ -1899,6 +1939,9 @@ In&nbsp;[3]:
 </p></footer>
 	<script type="text/javascript">
 	  var disqus_shortname = 'python4enlightenment';
+          var disqus_identifier = '/blog/2014/08/09/a-root-less-evil/';
+          var disqus_url = 'http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/';
+          var disqus_title = 'A root less evil';
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
