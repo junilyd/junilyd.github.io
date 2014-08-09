@@ -247,9 +247,7 @@ In&amp;nbsp;[]:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;
-&lt;h3&gt;Hello world&lt;/h3&gt;
-&lt;p&gt;{% include_cod mysqrt.py lang:python MySqrt.py %}&lt;/p&gt;</summary></entry><entry><title>Test of uploading posts</title><link href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/" rel="alternate"></link><updated>2014-08-08T09:42:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-08:blog/2014/08/08/test-of-uploading-posts/</id><summary type="html">&lt;p&gt;
+&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Test of uploading posts</title><link href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/" rel="alternate"></link><updated>2014-08-08T09:42:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-08:blog/2014/08/08/test-of-uploading-posts/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;em&gt;Note: This Post is copied from&lt;/em&gt; &lt;a href="http://jakevdp.github.io/blog/2012/10/04/blogging-with-ipython/"&gt;&lt;em&gt;this blogger&lt;/em&gt;&lt;/a&gt;, &lt;em&gt;and is the first test of this new web pages functionalty.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
