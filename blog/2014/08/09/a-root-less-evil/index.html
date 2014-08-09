@@ -1794,7 +1794,7 @@ jQuery(document).ready(function($) {
   <article class="hentry" role="article">
 <header>
       <h1 class="entry-title">A root less evil</h1>
-      <p class="meta"><time datetime="2014-08-09T19:44:00" pubdate>Aug 09, 2014</time></p>
+      <p class="meta"><time datetime="2014-08-09T19:57:00" pubdate>Aug 09, 2014</time></p>
 </header>
 
   <div class="entry-content"><p>
@@ -1802,24 +1802,23 @@ jQuery(document).ready(function($) {
 <p>Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.</p>
 <p><span class="math">\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]</span></p>
 <p>However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. (insert link here). I finished my B.Sc.EE project this semster. The project theme was embedded signal processing with the design and implementation of a GFSK-Demodulator, for satellite communication, in a fixed point DSP. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for first blog post here, where I will demonstrate these in Python, starting with Newtons Method.</p>
-<p>Newtons Method is an iterative approach, with an initial guess <span class="math">\(s\)</span> as seen here</p>
-<p><span class="math">\[ s = \frac{1}{2}(s + x/s)\]</span> , where is the number from which it is desired to calculate the square root.</p>
-<p>As an example, if we want to calculate the square root of 25 we can make a llop like this.</p>
+<p>Newtons Method is an iterative approach, with an initial guess, <span class="math">\(s\)</span>, as seen here</p>
+<p><span class="math">\[ s = \frac{1}{2}(s + x/s)\]</span></p>
+<p>where is the number from which it is desired to calculate the square root.</p>
+<p>As an example, if we want to calculate the square root of 25 we can make a loop like this.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span>
 <span class="n">kmax</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.e-14</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
     <span class="k">print</span> <span class="s">&quot;After </span><span class="si">%s</span><span class="s"> iterations, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-<span class="k">return</span> <span class="n">s</span>
 </pre></div>
 
 </div>
@@ -1843,12 +1842,45 @@ After 6 iterations, s =    5.000000000053722
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Newtons Methods approaches the correct answer rather quick, compared to the initial guess being <span class="math">\(1\)</span>, which is relatively far from <span class="math">\(5\)</span>. An automatic guess could the fraction i.e</p>
+<p><span class="math">\[\frac{x}{4}\]</span></p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[12]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mf">4.</span>
+<span class="n">kmax</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;After </span><span class="si">%s</span><span class="s"> iterations, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
+<div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-9-6aecd3f1a4d2&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">8</span>
-<span class="ansired">    return s</span>
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> &apos;return&apos; outside function
+After 1 iterations, s =    5.125000000000000
+After 2 iterations, s =    5.001524390243903
+After 3 iterations, s =    5.000000232305737
+After 4 iterations, s =    5.000000000000005
+After 5 iterations, s =    5.000000000000000
+After 6 iterations, s =    5.000000000000000
+
 </pre>
 </div>
 </div>
@@ -1922,7 +1954,7 @@ In&nbsp;[]:
   <span class="byline author vcard">
     Posted by <span class="fn">junilyd</span>
   </span>
-<time datetime="2014-08-09T19:44:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
+<time datetime="2014-08-09T19:57:00" pubdate>Aug 09, 2014</time></p><div class="sharing">
   <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" data-via="junilyd" data-counturl="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" >Tweet</a>
   <div class="g-plusone" data-size="medium"></div>
     <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
