@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/feeds/all.atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-08-09T22:43:00-03:00</updated><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" rel="alternate"></link><updated>2014-08-09T22:43:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/a-root-less-evil/</id><summary type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/feeds/all.atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-08-09T23:00:00-03:00</updated><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/09/a-root-less-evil/" rel="alternate"></link><updated>2014-08-09T23:00:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/a-root-less-evil/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semster. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude &lt;span class="math"&gt;\(M\)&lt;/span&gt; of a complex number &lt;span class="math"&gt;\(I + jQ\)&lt;/span&gt; which is defined as &lt;span class="math"&gt;\(M = \sqrt{I^2 + Q^2}\)&lt;/span&gt;. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for first blog post here, where I will demonstrate these in Python, starting with Newtons Method.&lt;/p&gt;
+&lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semester. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude &lt;span class="math"&gt;\(M\)&lt;/span&gt; of a complex number &lt;span class="math"&gt;\(I + jQ\)&lt;/span&gt; which is defined as &lt;span class="math"&gt;\(M = \sqrt{I^2 + Q^2}\)&lt;/span&gt;. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for my first blog post here, where I will demonstrate some of these in Python, starting with Newtons Method.&lt;/p&gt;
 &lt;p&gt;Newtons Method is an iterative approach, with an initial guess, &lt;span class="math"&gt;\(s\)&lt;/span&gt;, as seen here&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[ s = \frac{1}{2}(s + x/s)\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;where &lt;span class="math"&gt;\(x\)&lt;/span&gt; is the number from which it is desired to calculate the square root.&lt;/p&gt;
@@ -93,9 +93,9 @@ After 6 iterations, s =    5.000000000000000
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Then the square root approximation algorithm has reached the correct &lt;span class="math"&gt;\(5\)&lt;/span&gt; already after 4 iterations, which is quite fair.&lt;/p&gt;
-&lt;p&gt;Another situation is when we have a fixed point machine for implementing such an algorithm. In such a situation we have to work primarily with numbers which is a power of &lt;span class="math"&gt;\(2\)&lt;/span&gt;. Any mulitplication or division with a power of two is normally done freely in since it can be done by a shifting the binary registers.&lt;/p&gt;
+&lt;p&gt;Another situation is when we have a fixed point machine for implementing such an algorithm. In such a situation we have to work primarily with numbers which is a power of &lt;span class="math"&gt;\(2\)&lt;/span&gt;. Any mulitplication or division with a power of two is normally done without mulitplying, since it can be done by a shifting the binary registers from inside the ALU.&lt;/p&gt;
 &lt;p&gt;When calculating the complex magnitude &lt;span class="math"&gt;\(M = \sqrt{I^2 + Q^2}\)&lt;/span&gt; as described above a similar procedure can be utilized. To approximate the square root operation, the Binary-Shift Magitude Estimation can be used to estimate &lt;span class="math"&gt;\(M\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\[ M \approx A\text{M}_{ax} + B\text{M}_{in}\]&lt;/span&gt;&lt;br /&gt;where &lt;span class="math"&gt;\(A=\frac{15}{16}, B = \frac{15}{32}\)&lt;/span&gt; which is similar sizes compared to Newtons Method&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\[ M \approx A\text{M}_{ax} + B\text{M}_{in}\]&lt;/span&gt;&lt;br /&gt;where &lt;span class="math"&gt;\(A=\frac{15}{16}, B = \frac{15}{32}\)&lt;/span&gt; which is similar sizes as used in Newtons Method&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
@@ -139,12 +139,12 @@ M =   11.40175
 
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This algorithm’s appeal is that it requires no explicit multiples because the &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; values are binary fractions and the formula is implemented with simple binary right-shifts, additions, and subtractions. (For example, a 15/32 times &lt;span class="math"&gt;\(I\)&lt;/span&gt; multiply can be performed by first shifting &lt;span class="math"&gt;\(I\)&lt;/span&gt; right by four bits and subtracting that number from &lt;span class="math"&gt;\(I\)&lt;/span&gt; to obtain 15/16 times z. That result is then shifted right one bit).&lt;/p&gt;
+&lt;p&gt;This algorithm’s appeal is that it requires no explicit multiples because the &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; values are binary fractions and the formula is implemented with simple binary right-shifts, additions, and subtractions. (For example, a 15/32 times &lt;span class="math"&gt;\(I\)&lt;/span&gt; multiply can be performed by first shifting &lt;span class="math"&gt;\(I\)&lt;/span&gt; right by four bits and subtracting that number from &lt;span class="math"&gt;\(I\)&lt;/span&gt; to obtain 15/16 times z. That result is then shifted right one bit). This is simulated in the following script.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[154]:
+In&amp;nbsp;[160]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
@@ -152,13 +152,11 @@ In&amp;nbsp;[154]:
 &lt;span class="n"&gt;J4&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;J5&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;I4&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;I5&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="c"&gt;# M = 15/16 I + 15/32 J&lt;/span&gt;
     &lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;I4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;J5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="c"&gt;# M = 15/16 J + 15/32 I&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;I5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;J4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;I5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;M = &lt;/span&gt;&lt;span class="si"&gt;%10.0f&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;M&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;M = &lt;/span&gt;&lt;span class="si"&gt;%10.5f&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;M&lt;/span&gt;
+&lt;span class="c"&gt;## For comparison&lt;/span&gt;
 &lt;span class="n"&gt;M2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;J&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;M2 = &lt;/span&gt;&lt;span class="si"&gt;%10.5f&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;M2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -173,8 +171,7 @@ In&amp;nbsp;[154]:
 &lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
 &lt;pre&gt;
-1
-M =         12
+M =   12.00000
 M2 =   11.40175
 
 &lt;/pre&gt;
@@ -184,6 +181,9 @@ M2 =   11.40175
 &lt;/div&gt;
 &lt;/div&gt;
 
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Many combinations of &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; are provided in scientific litterature, yielding various accuracies for estimating &lt;span class="math"&gt;\(M\)&lt;/span&gt;. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
