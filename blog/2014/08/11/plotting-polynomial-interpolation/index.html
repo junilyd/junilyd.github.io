@@ -1799,7 +1799,6 @@ jQuery(document).ready(function($) {
 
   <div class="entry-content"><p>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="plotting-polynomial-interpolation">Plotting Polynomial Interpolation</h1>
 <p>This post is a note where I gain some experience with Python matplotlib and linear equations with NumPy. This post is initialized with a specific solution for only the quadratic polynomial. At the end of this post there is a program which generalizes the order of the polynomial solution and therefore the number of points which it is required to fit. ####Polynomial interpolation. Suppose we want to determine the quadratic polynomial <span class="math">\(p(x) = c_0 + c_1x + c_2x^2\)</span> that passes through three given data points <span class="math">\((x_i,y_i)\)</span> for <span class="math">\(i = 1,2,3\)</span>.</p>
 <p>Requiring that <span class="math">\(p(x) = y_i\)</span> for these three values gives a linear system of 3 equations in 3 unknowns (the coefficient <span class="math">\(c_i\)</span>).</p>
 <p>For example, if the data points are <span class="math">\((-1, 1), (0, -1), (2, 7)\)</span> then the system of equations is</p>
