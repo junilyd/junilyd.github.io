@@ -251,14 +251,21 @@ In&amp;nbsp;[]:
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This post is a note where I gain some experience with Python matplotlib and linear equations with NumPy. This post is initialized with a specific solution for only the quadratic polynomial. At the end of this post there is a program which generalizes the order of the polynomial solution and therefore the number of points which it is required to fit. ####Polynomial interpolation. Suppose we want to determine the quadratic polynomial &lt;span class="math"&gt;\(p(x) = c_0 + c_1x + c_2x^2\)&lt;/span&gt; that passes through three given data points &lt;span class="math"&gt;\((x_i,y_i)\)&lt;/span&gt; for &lt;span class="math"&gt;\(i = 1,2,3\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Requiring that &lt;span class="math"&gt;\(p(x) = y_i\)&lt;/span&gt; for these three values gives a linear system of 3 equations in 3 unknowns (the coefficient &lt;span class="math"&gt;\(c_i\)&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;For example, if the data points are &lt;span class="math"&gt;\((-1, 1), (0, -1), (2, 7)\)&lt;/span&gt; then the system of equations is&lt;/p&gt;
+&lt;p&gt;For example, if the data points are &lt;span class="math"&gt;\((x_i,y_i) = (-1, 1), (0, -1), (2, 7)\)&lt;/span&gt; then the system of equations is&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[\begin{align}
     c_0 - c_1 + c_2 &amp;amp; = 1 \\ 
     c_0 + 0c_1 + 0c_2 &amp;amp; = 0 \\
     c_0 + 2c_1 + 4c_2 &amp;amp; = 7 \\
 \end{align}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;This has the form &lt;span class="math"&gt;\(Ac = y\)&lt;/span&gt; where &lt;span class="math"&gt;\(y\)&lt;/span&gt; is the vector of coefficients we seek, and &lt;span class="math"&gt;\(A\)&lt;/span&gt; is the &lt;span class="math"&gt;\(3 x 3\)&lt;/span&gt; matrix&lt;/p&gt;
-
+&lt;p&gt;&lt;span class="math"&gt;\[\begin{equation}
+  A = 
+  \begin{bmatrix}
+      1 &amp;amp; -1 &amp;amp; 1 \\
+      1 &amp;amp; 0 &amp;amp; 0 \\
+      1 &amp;amp; 2 &amp;amp; 4
+  \end{bmatrix}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;To solve this system we can use the &lt;span class="math"&gt;\(solve\)&lt;/span&gt; function from the &lt;span class="math"&gt;\(numpy.linalg\)&lt;/span&gt; module. The solution is &lt;span class="math"&gt;\(c = [-1, 0, 2]^T\)&lt;/span&gt; corresponding to the polynomial &lt;span class="math"&gt;\(p(x) = 2x^2 - 1\)&lt;/span&gt;, as easily verified. I will now demonstrate how to create a script for this in Python.&lt;/p&gt;
 &lt;h3 id="solving-the-equations-in-python"&gt;Solving the Equations in Python&lt;/h3&gt;
 &lt;/div&gt;

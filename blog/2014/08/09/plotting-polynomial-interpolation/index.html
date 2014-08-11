@@ -1801,14 +1801,21 @@ jQuery(document).ready(function($) {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This post is a note where I gain some experience with Python matplotlib and linear equations with NumPy. This post is initialized with a specific solution for only the quadratic polynomial. At the end of this post there is a program which generalizes the order of the polynomial solution and therefore the number of points which it is required to fit. ####Polynomial interpolation. Suppose we want to determine the quadratic polynomial <span class="math">\(p(x) = c_0 + c_1x + c_2x^2\)</span> that passes through three given data points <span class="math">\((x_i,y_i)\)</span> for <span class="math">\(i = 1,2,3\)</span>.</p>
 <p>Requiring that <span class="math">\(p(x) = y_i\)</span> for these three values gives a linear system of 3 equations in 3 unknowns (the coefficient <span class="math">\(c_i\)</span>).</p>
-<p>For example, if the data points are <span class="math">\((-1, 1), (0, -1), (2, 7)\)</span> then the system of equations is</p>
+<p>For example, if the data points are <span class="math">\((x_i,y_i) = (-1, 1), (0, -1), (2, 7)\)</span> then the system of equations is</p>
 <p><span class="math">\[\begin{align}
     c_0 - c_1 + c_2 &amp; = 1 \\ 
     c_0 + 0c_1 + 0c_2 &amp; = 0 \\
     c_0 + 2c_1 + 4c_2 &amp; = 7 \\
 \end{align}\]</span></p>
 <p>This has the form <span class="math">\(Ac = y\)</span> where <span class="math">\(y\)</span> is the vector of coefficients we seek, and <span class="math">\(A\)</span> is the <span class="math">\(3 x 3\)</span> matrix</p>
-
+<p><span class="math">\[\begin{equation}
+  A = 
+  \begin{bmatrix}
+      1 &amp; -1 &amp; 1 \\
+      1 &amp; 0 &amp; 0 \\
+      1 &amp; 2 &amp; 4
+  \end{bmatrix}
+\end{equation}\]</span></p>
 <p>To solve this system we can use the <span class="math">\(solve\)</span> function from the <span class="math">\(numpy.linalg\)</span> module. The solution is <span class="math">\(c = [-1, 0, 2]^T\)</span> corresponding to the polynomial <span class="math">\(p(x) = 2x^2 - 1\)</span>, as easily verified. I will now demonstrate how to create a script for this in Python.</p>
 <h3 id="solving-the-equations-in-python">Solving the Equations in Python</h3>
 </div>
