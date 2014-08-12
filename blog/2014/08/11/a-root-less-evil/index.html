@@ -1985,66 +1985,6 @@ M2 =   11.40175
 <p>Further reading about this subject can be suggested here:</p>
 <p><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0CCcQFjAB&amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;bvm=bv.72676100,d.bGQ">A Root Less Evil - DSP tips &amp; tricks</a></p>
 <p>Lastly, a small piece of square root code is submitted.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Module for approximating the square root</span>
-<span class="sd">Input</span>
-<span class="sd">        x: The number for which the square root is approximated.</span>
-<span class="sd">output</span>
-<span class="sd">        s:  The requested square root.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;newton(x)&#39;&#39;&#39;</span>
-    
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">nan</span>
-
-    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mf">0.</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">0.</span>
-    <span class="k">elif</span> <span class="n">x</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;*** Error, x must be nonnegative&#39;</span>
-        <span class="k">return</span> <span class="n">nan</span>
-    <span class="k">assert</span> <span class="n">x</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">,</span><span class="s">&quot;Unrecognized input&quot;</span>
-    
-    <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mf">5.</span>
-    <span class="n">kmax</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.e-14</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot;Before iteration </span><span class="si">%s</span><span class="s">, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-        <span class="n">s0</span> <span class="o">=</span> <span class="n">s</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
-        <span class="n">delta_s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">s0</span>
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta_s</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
-            <span class="k">break</span>
-    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;After </span><span class="si">%s</span><span class="s"> iterations, s = </span><span class="si">%20.15f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">s</span>
-
-<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
-    <span class="kn">import</span> <span class="nn">mysqrt</span>
-
-    <span class="n">xvalues</span> <span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mf">1.e-4</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvalues</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;Testing with x = </span><span class="si">%20.15e</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">mysqrt</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">s_numpy</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s">&#39;s = </span><span class="si">%20.15e</span><span class="s">,   numpy.sqrt = </span><span class="si">%20.15e</span><span class="s">&#39;</span> \
-                <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s_numpy</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="n">s_numpy</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.e-14</span><span class="p">,</span> \
-                <span class="s">&#39;Disagree for x = </span><span class="si">%20.15e</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-
 </div></p>
 <figure class='code'>
 <figcaption><span>Particles in a Box mysqrt.py</span> <a href='/downloads/code/mysqrt.py'>download</a></figcaption>
