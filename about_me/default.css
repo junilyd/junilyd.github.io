@@ -1,0 +1,178 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+/* Elements */
+
+body {
+	background: #4096EE url(images/img1.jpg) repeat-x;
+	text-align: left;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #333333;
+}
+
+h1 {
+}
+
+h2, h3 {
+	margin-top: 0px;
+}
+
+h4, h5, h6 {
+}
+
+p, ol, ul, dl, blockquote {
+}
+
+a {
+	color: #1B4978;
+}
+
+a:hover {
+	text-decoration: 	none;
+}
+
+/* Header */
+
+#header {
+	width: 800px;
+	height: 60px;
+	margin: 0px auto;
+}
+
+#header h1 {
+	float: left;
+	margin: 10px;
+	padding-top: 10px;
+	font-size: 42px;
+	letter-spacing: -2px;
+}
+
+#header h2 {
+	float: right;
+	margin: 15px 0px 0px 0px;
+	padding-top: 28px;
+	font-size: 16px;
+	letter-spacing: -1px;
+	color: #D0D0D0;
+}
+
+#header a {
+	text-decoration: none;
+	color: #D0D0D0;
+}
+
+/* Menu */
+
+#menu {
+	width: 800px;
+	height: 10px;
+	margin: 0px auto;
+}
+
+#menu ul {
+	margin:10px;
+	padding: 0px;
+	list-style: none;
+}
+
+#menu li {
+	display: 	block;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	width: 250px;
+	padding: 0px 0px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	background: none;
+}
+
+#menu a:hover {
+	color: white; 
+	background: none;
+}
+
+/* Content */
+
+#content {
+	background: none;
+	width: 800px;
+	margin: 0px auto;
+	padding: 22px 0px 0px 0px;
+}
+
+#colOne {
+	float: center;
+	width: 800px;
+	margin-top: 20px;
+	padding-right: 20px;
+}
+
+#colTwo {
+	float: left;
+	width: 342px;
+	margin-top: 200px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+#colTwo ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style-position: inside;
+}
+
+#content h1 {
+	background-color: #B2D4F7;
+	padding: 5px 0px 5px 5px;
+	color: #173E68;
+}
+
+#content h2 {
+
+	background-color: #B2D4F7;
+	
+	padding: 5px 0px 5px 5px;
+	text-transform: uppercase;
+	font-size: 16px;
+	color: #173E68;
+}
+
+#content h3 {
+	color: #2F73B8;
+
+}
+/* Footer */
+
+#footer {
+	width: 800px;
+	margin: 0px auto;
+	padding: 3px 0px 0px 0px;
+	height: 50px;
+	background: none;
+
+}
+
+#footer p {
+	margin: 0px;
+	padding-top: 15px;
+	text-align: center;
+	font-size: 14px;
+	opacity: 0.4;
+	color: #999999;
+}
+
+#footer a {
+	color: #666666;
+}
+
+#footer a:hover {
+	color: #FFFFFF;
+}
