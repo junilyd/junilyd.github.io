@@ -2,7 +2,7 @@
 
 
 
-timestamp=$(date +"%m-%d-%h-%m")
+timestamp=$(date +"%m-%d-%h-%M")
 
 echo $timestamp
 
