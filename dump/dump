@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+
+timestamp=$(date +"%m-%d-%h-%m")
+
+sudo cp -rf $1 /Users/OSX/git/junilyd.github.io/dump/$1 && 
+
+cd /Users/OSX/git/junilyd.github.io/dump && 
+
+git add -A && git commit -a -m "Auto Commit" && 
+
+git push -u origin master 
+
+echo "https://github.com/junilyd/junilyd.github.io/tree/master/dump/$1"
