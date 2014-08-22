@@ -1,7 +1,6 @@
 #!/bin/bash
 
 timestamp=$(date +"%m-%d-%H-%M")
-echo "$timestamp-$1"
 sudo cp -rf $1 /Users/OSX/git/junilyd.github.io/dump/$timestamp-$1 && 
 cd /Users/OSX/git/junilyd.github.io/dump && 
 git add -A && git commit -a -m "Auto Commit of $timestamp-$1" && 
