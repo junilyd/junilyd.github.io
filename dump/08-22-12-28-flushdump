@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd ~/git/junilyd.github.io/ &&
+git rm ~/git/junilyd.github.io/dump/* &&
+git commit -m "flushed dump dir" &&
+git push -u origin master &&
+cd ~/git/junilyd.github.io/ &&
+mkdir dump &&
+git add dump &&
+git commit -m "new dump dir" &&
+git push -u origin master 
