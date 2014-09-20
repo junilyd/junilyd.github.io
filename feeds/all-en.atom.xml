@@ -191,7 +191,94 @@ JQEGQEoCDICUBBgAKf0XqbirD2F+q4oAAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;From this figure it can be seen that the value of &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; affects the probaility of x[0], and we should be able to infer the value of &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; from the observed value of &lt;span class="math"&gt;\(x[0]\)&lt;/span&gt;. i.e. If we masure x[0] to be positive, it is most likely that &lt;span class="math"&gt;\(\theta = \theta3\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In order to design a good estimator it is required to specify&lt;/p&gt;
+&lt;p&gt;In order to design a good estimator it is required to specify a PDF which is consistent with the problem constraints and any prior knowledge.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[17]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;matlab&lt;/span&gt;
+&lt;span class="n"&gt;figure&lt;/span&gt;
+&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="vbox output_wrapper"&gt;
+&lt;div class="output vbox"&gt;
+
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_display_data"&gt;
+
+
+&lt;img src="data:image/png;base64,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
+EOlfpo2h+F9rnOwAAAAASUVORK5CYII=
+"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
