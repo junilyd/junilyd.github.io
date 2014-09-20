@@ -1140,7 +1140,7 @@ QmCC
 &lt;p&gt;&lt;span class="math"&gt;\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semester. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude &lt;span class="math"&gt;\(M\)&lt;/span&gt; of a complex number &lt;span class="math"&gt;\(I + jQ\)&lt;/span&gt; which is defined as &lt;span class="math"&gt;\(M = \sqrt{I^2 + Q^2}\)&lt;/span&gt;. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for my first blog post here, where I will demonstrate some of these in Python, starting with Newtons Method.&lt;/p&gt;
 &lt;p&gt;Newtons Method is an iterative approach, with an initial guess, &lt;span class="math"&gt;\(s\)&lt;/span&gt;, as seen here&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\[ s = \frac{1}{2}(s + x/s)\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(s = \frac{1}{2}(s + x/s)\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;where &lt;span class="math"&gt;\(x\)&lt;/span&gt; is the number from which it is desired to calculate the square root.&lt;/p&gt;
 &lt;p&gt;As an example, if we want to calculate the square root of 25 we can make a loop like this.&lt;/p&gt;
 &lt;/div&gt;
