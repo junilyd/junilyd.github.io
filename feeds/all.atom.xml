@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/feeds/all.atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-09-20T14:12:00-03:00</updated><entry><title>Fundamentals of Estimation Theory</title><link href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/" rel="alternate"></link><updated>2014-09-20T14:12:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-20:blog/2014/09/20/fundamentals-of-estimation-theory/</id><summary type="html">&lt;p&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="the-mathematical-estimation-problem"&gt;The Mathematical Estimation Problem&lt;/h2&gt;
+&lt;p&gt;Since our study group has planned to design a poly tuner, by utilizing multi pitch estimation, this is a brief investigation into the basics of estimation theory.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The N-point dataset is &lt;span class="math"&gt;\(\texttt{x} = \{x[0], x[1], ... ,x[N-1] \}\)&lt;/span&gt; is dependent on an unknown parameter &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;, which is to be determined based on the data. Therefore, an estimator &lt;span class="math"&gt;\(\hat{\theta}\)&lt;/span&gt; is defined as &lt;span class="math"&gt;\[ 
+\begin{equation}
+    \hat{\theta} = g(\texttt{x})
+\end{equation}
+\]&lt;/span&gt; When determining good estimators the first step is to mathematically model the data. Because the data are random, it is described by its probability density function (PDF).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
@@ -32,17 +46,6 @@ Send &amp;apos;exit&amp;apos; command to kill the server
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="the-mathematical-estimation-problem"&gt;The Mathematical Estimation Problem&lt;/h2&gt;
-&lt;p&gt;Since our study group has planned to design a poly tuner, by utilizing multi pitch estimation, this is a brief investigation into the basics of estimation theory.&lt;/p&gt;
-&lt;p&gt;When determining good estimators the first step is to mathemtically model the data. Because the data are random, it is described by its probability density function (PDF).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-
-&lt;/div&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The N-point dataset is &lt;span class="math"&gt;\(\texttt{x} = \{x[0], x[1], ... ,x[N-1] \}\)&lt;/span&gt; is dependent on an unknown parameter &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;, which is to be determined based on the data. Therefore, an estimator &lt;span class="math"&gt;\(\hat{\theta}\)&lt;/span&gt; is defined as &lt;span class="math"&gt;\[\hat{\theta} = g(\texttt{x})\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
@@ -227,7 +230,37 @@ In&amp;nbsp;[]:
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Matlab Code in iPython Notebook</title><link href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/" rel="alternate"></link><updated>2014-09-19T18:10:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-19:blog/2014/09/19/matlab-code-in-ipython-notebook/</id><summary type="html">&lt;p&gt;
+&lt;/div&gt;&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary></entry><entry><title>Matlab Code in iPython Notebook</title><link href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/" rel="alternate"></link><updated>2014-09-19T18:10:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-19:blog/2014/09/19/matlab-code-in-ipython-notebook/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I was very pleased today to find out that some people made a library which makes it possible to utilize MATLAB code directly in the iPython Notebook, which this webpage is written in. As you see in the In[134] the library is called pymatbridge. For me personally this is advantageous because most of the material at this semester is based on utilizing MATLAB libraries, so now this webpage is directly compatible with my daily work, with &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;, MATLAB and Python.&lt;/p&gt;
 &lt;/div&gt;
