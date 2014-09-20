@@ -1166,8 +1166,11 @@ QmCC
 &lt;/script&gt;
 </summary></entry><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/11/a-root-less-evil/" rel="alternate"></link><updated>2014-08-11T23:04:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-11:blog/2014/08/11/a-root-less-evil/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. &lt;span class="math"&gt;\[ 
+\begin{equation}
+    x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41
+\end{equation}    
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semester. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude &lt;span class="math"&gt;\(M\)&lt;/span&gt; of a complex number &lt;span class="math"&gt;\(I + jQ\)&lt;/span&gt; which is defined as &lt;span class="math"&gt;\(M = \sqrt{I^2 + Q^2}\)&lt;/span&gt;. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for my first blog post here, where I will demonstrate some of these in Python, starting with Newtons Method.&lt;/p&gt;
 &lt;p&gt;Newtons Method is an iterative approach, with an initial guess, &lt;span class="math"&gt;\(s\)&lt;/span&gt;, as seen here&lt;/p&gt;
 &lt;p&gt;&lt;span class="math"&gt;\[ s = \frac{1}{2}(s + x/s)\]&lt;/span&gt;&lt;/p&gt;
@@ -1405,7 +1408,37 @@ M2 =   11.40175
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/figure&gt;</summary></entry><entry><title>Plotting Polynomial InterPolation</title><link href="http://junilyd.github.io/blog/2014/08/09/plotting-polynomial-interpolation/" rel="alternate"></link><updated>2014-08-09T21:28:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/plotting-polynomial-interpolation/</id><summary type="html">&lt;p&gt;
+&lt;/figure&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary></entry><entry><title>Plotting Polynomial InterPolation</title><link href="http://junilyd.github.io/blog/2014/08/09/plotting-polynomial-interpolation/" rel="alternate"></link><updated>2014-08-09T21:28:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-09:blog/2014/08/09/plotting-polynomial-interpolation/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This post is a note where I gain some experience with Python matplotlib and linear equations with NumPy. This post is initialized with a specific solution for only the quadratic polynomial. At the end of this post there is a program which generalizes the order of the polynomial solution and therefore the number of points which it is required to fit. ####Polynomial interpolation. Suppose we want to determine the quadratic polynomial &lt;span class="math"&gt;\(p(x) = c_0 + c_1x + c_2x^2\)&lt;/span&gt; that passes through three given data points &lt;span class="math"&gt;\((x_i,y_i)\)&lt;/span&gt; for &lt;span class="math"&gt;\(i = 1,2,3\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Requiring that &lt;span class="math"&gt;\(p(x) = y_i\)&lt;/span&gt; for these three values gives a linear system of 3 equations in 3 unknowns (the coefficient &lt;span class="math"&gt;\(c_i\)&lt;/span&gt;).&lt;/p&gt;
