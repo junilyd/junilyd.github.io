@@ -1800,8 +1800,8 @@ jQuery(document).ready(function($) {
 
   <div class="entry-content"><p>
 <div class="text_cell_render border-box-sizing rendered_html">
-Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.
-
+<p>Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.</p>
+<p><span class="math">\[ x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41\]</span></p>
 <p>However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semester. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude <span class="math">\(M\)</span> of a complex number <span class="math">\(I + jQ\)</span> which is defined as <span class="math">\(M = \sqrt{I^2 + Q^2}\)</span>. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for my first blog post here, where I will demonstrate some of these in Python, starting with Newtons Method.</p>
 <p>Newtons Method is an iterative approach, with an initial guess, <span class="math">\(s\)</span>, as seen here</p>
 <p><span class="math">\[ s = \frac{1}{2}(s + x/s)\]</span></p>
@@ -1811,7 +1811,7 @@ Since it sometimes is required to calculate the square root of some number. This
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[1]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
@@ -1854,7 +1854,7 @@ After 6 iterations, s =    5.000000000053722
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
@@ -1899,7 +1899,7 @@ After 6 iterations, s =    5.000000000000000
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[132]:
+In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mf">3.</span>
@@ -1943,7 +1943,7 @@ M =   11.40175
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[160]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mi">3</span>
