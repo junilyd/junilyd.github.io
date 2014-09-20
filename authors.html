@@ -1717,10 +1717,10 @@ init_mathjax = function() {
         // MathJax loaded
         MathJax.Hub.Config({
             tex2jax: {
-                inlineMath: [ ['$','$'] ],
-                displayMath: [ ['$$','$$']  ]
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
             },
-            displayAlign: 'right', // Change this to 'center' to center equations.
+            displayAlign: 'center', // Change this to 'center' to center equations.
             "HTML-CSS": {
                 styles: {'.MathJax_Display': {"margin": 0}}
             }
@@ -1791,11 +1791,14 @@ jQuery(document).ready(function($) {
 </ul></nav>
   <div id="main">
     <div id="content">
-    <h1>Authors on python4enlightening</h1>        <li><a href="http://junilyd.github.io/author/junilyd.html">junilyd</a> (5)</li>
+    <h1>Authors on python4enlightening</h1>        <li><a href="http://junilyd.github.io/author/junilyd.html">junilyd</a> (6)</li>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
+      <li class="post">
+          <a href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/">Fundamentals of Estimation Theory</a>
+      </li>
       <li class="post">
           <a href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/">Matlab Code in iPython Notebook</a>
       </li>
@@ -1807,9 +1810,6 @@ jQuery(document).ready(function($) {
       </li>
       <li class="post">
           <a href="http://junilyd.github.io/blog/2014/08/09/plotting-polynomial-interpolation/">Plotting Polynomial InterPolation</a>
-      </li>
-      <li class="post">
-          <a href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Test of uploading posts</a>
       </li>
     </ul>
   </section>

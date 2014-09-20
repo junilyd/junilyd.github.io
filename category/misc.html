@@ -1717,10 +1717,10 @@ init_mathjax = function() {
         // MathJax loaded
         MathJax.Hub.Config({
             tex2jax: {
-                inlineMath: [ ['$','$'] ],
-                displayMath: [ ['$$','$$']  ]
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
             },
-            displayAlign: 'right', // Change this to 'center' to center equations.
+            displayAlign: 'center', // Change this to 'center' to center equations.
             "HTML-CSS": {
                 styles: {'.MathJax_Display': {"margin": 0}}
             }
@@ -1792,6 +1792,55 @@ jQuery(document).ready(function($) {
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/">Fundamentals of Estimation Theory</a>
+      </h1>
+      <p class="meta"><time datetime="2014-09-20T14:12:00" pubdate>Sep 20, 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="kn">import</span> <span class="nn">pymatbridge</span> <span class="kn">as</span> <span class="nn">mpb</span>
+<span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+<span class="n">mpb</span><span class="o">.</span><span class="n">load_ipython_extension</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Starting MATLAB on ZMQ socket ipc:///tmp/pymatbridge
+Send &apos;exit&apos; command to kill the server
+.MATLAB started and connected!
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="the-mathematical-estimation-problem">The Mathematical Estimation Problem</h2>
+<p>Since our study group has planned to design a poly tuner, by utilizing multi pitch estimation ...</p></div></p></div>
+  <footer>
+    <a rel="full-article" href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -1948,6 +1997,9 @@ F(n) = F(n-1) + F(n-2)
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/">Fundamentals of Estimation Theory</a>
+      </li>
+      <li class="post">
           <a href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/">Matlab Code in iPython Notebook</a>
       </li>
       <li class="post">
@@ -1958,9 +2010,6 @@ F(n) = F(n-1) + F(n-2)
       </li>
       <li class="post">
           <a href="http://junilyd.github.io/blog/2014/08/09/plotting-polynomial-interpolation/">Plotting Polynomial InterPolation</a>
-      </li>
-      <li class="post">
-          <a href="http://junilyd.github.io/blog/2014/08/08/test-of-uploading-posts/">Test of uploading posts</a>
       </li>
     </ul>
   </section>

@@ -1,5 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-09-19T18:10:00-03:00</updated><entry><title>Matlab Code in iPython Notebook</title><link href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/" rel="alternate"></link><updated>2014-09-19T18:10:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-19:blog/2014/09/19/matlab-code-in-ipython-notebook/</id><summary type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>python4enlightening</title><link href="http://junilyd.github.io/" rel="alternate"></link><link href="http://junilyd.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://junilyd.github.io/</id><updated>2014-09-20T14:12:00-03:00</updated><entry><title>Fundamentals of Estimation Theory</title><link href="http://junilyd.github.io/blog/2014/09/20/fundamentals-of-estimation-theory/" rel="alternate"></link><updated>2014-09-20T14:12:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-20:blog/2014/09/20/fundamentals-of-estimation-theory/</id><summary type="html">&lt;p&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[1]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pymatbridge&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mpb&lt;/span&gt;
+&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_ipython&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;mpb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_ipython_extension&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="vbox output_wrapper"&gt;
+&lt;div class="output vbox"&gt;
+
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
+&lt;pre&gt;
+Starting MATLAB on ZMQ socket ipc:///tmp/pymatbridge
+Send &amp;apos;exit&amp;apos; command to kill the server
+.MATLAB started and connected!
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="the-mathematical-estimation-problem"&gt;The Mathematical Estimation Problem&lt;/h2&gt;
+&lt;p&gt;Since our study group has planned to design a poly tuner, by utilizing multi pitch estimation, this is a brief investigation into the basics of estimation theory.&lt;/p&gt;
+&lt;p&gt;When determining good estimators the first step is to mathemtically model the data. Because the data are random, it is described by its probability density function (PDF).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The N-point dataset is &lt;span class="math"&gt;\(\texttt{x} = \{x[0], x[1], ... ,x[N-1] \}\)&lt;/span&gt; is dependent on an unknown parameter &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;, which is to be determined based on the data. Therefore, an estimator &lt;span class="math"&gt;\(\hat{\theta}\)&lt;/span&gt; is defined as &lt;span class="math"&gt;\[\hat{\theta} = g(\texttt{x})\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[2]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;matlab&lt;/span&gt;
+&lt;span class="n"&gt;sigma&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;theta1&lt;/span&gt; &lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;theta2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;theta1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;theta3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;theta2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        
+&lt;span class="n"&gt;x0&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;theta1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;theta3&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;theta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;theta1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;p1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;.*&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;theta1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;p2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;.*&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;theta2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;p3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;.*&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sigma&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;theta3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;k&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.k&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;--k&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;linewidth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Dependence of PDF on unknown parameter &lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s"&gt;heta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;fontsize&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;x[0]&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;fontsize&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;p(x[0];&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s"&gt;heta)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;fontsize&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;theta = &lt;/span&gt;&lt;span class="si"&gt;%1.0f&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;theta1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;sprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;theta = &lt;/span&gt;&lt;span class="si"&gt;%1.0f&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;theta2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;sprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;theta = &lt;/span&gt;&lt;span class="si"&gt;%3.0f&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;theta3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="vbox output_wrapper"&gt;
+&lt;div class="output vbox"&gt;
+
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_display_data"&gt;
+
+
+&lt;img src="data:image/png;base64,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
+SUVORK5CYII=
+"&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[67]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Matlab Code in iPython Notebook</title><link href="http://junilyd.github.io/blog/2014/09/19/matlab-code-in-ipython-notebook/" rel="alternate"></link><updated>2014-09-19T18:10:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-09-19:blog/2014/09/19/matlab-code-in-ipython-notebook/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I was very pleased today to find out that some people made a library which makes it possible to utilize MATLAB code directly in the iPython Notebook, which this webpage is written in. As you see in the In[134] the library is called pymatbridge. For me personally this is advantageous because most of the material at this semester is based on utilizing MATLAB libraries, so now this webpage is directly compatible with my daily work, with &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt;, MATLAB and Python.&lt;/p&gt;
 &lt;/div&gt;
