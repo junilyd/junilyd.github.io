@@ -1475,7 +1475,7 @@ QmCC
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[2]:
+In&amp;nbsp;[1]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;25.&lt;/span&gt;
@@ -1588,10 +1588,24 @@ In&amp;nbsp;[3]:
 
 
 &lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_pyerr"&gt;
+&lt;pre&gt;
+&lt;span class="ansired"&gt;---------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="ansired"&gt;NameError&lt;/span&gt;                                 Traceback (most recent call last)
+&lt;span class="ansigreen"&gt;&amp;lt;ipython-input-3-1527ba320b12&amp;gt;&lt;/span&gt; in &lt;span class="ansicyan"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;&lt;span class="ansiblue"&gt;()&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     10&lt;/span&gt; &lt;span class="ansigreen"&gt;print&lt;/span&gt; &lt;span class="ansiblue"&gt;&amp;quot;M = %10.5f&amp;quot;&lt;/span&gt; &lt;span class="ansiblue"&gt;%&lt;/span&gt;M&lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     11&lt;/span&gt; &lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;---&amp;gt; 12&lt;/span&gt;&lt;span class="ansired"&gt; &lt;/span&gt;M2 &lt;span class="ansiblue"&gt;=&lt;/span&gt; sqrt&lt;span class="ansiblue"&gt;(&lt;/span&gt;I&lt;span class="ansiblue"&gt;**&lt;/span&gt;&lt;span class="ansicyan"&gt;2&lt;/span&gt; &lt;span class="ansiblue"&gt;+&lt;/span&gt; J&lt;span class="ansiblue"&gt;**&lt;/span&gt;&lt;span class="ansicyan"&gt;2&lt;/span&gt;&lt;span class="ansiblue"&gt;)&lt;/span&gt;&lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     13&lt;/span&gt; &lt;span class="ansigreen"&gt;print&lt;/span&gt; &lt;span class="ansiblue"&gt;&amp;quot;M = %10.5f&amp;quot;&lt;/span&gt; &lt;span class="ansiblue"&gt;%&lt;/span&gt;M2&lt;span class="ansiblue"&gt;&lt;/span&gt;
+
+&lt;span class="ansired"&gt;NameError&lt;/span&gt;: name &amp;apos;sqrt&amp;apos; is not defined&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
 &lt;pre&gt;
 M =   11.71875
-M =   11.40175
 
 &lt;/pre&gt;
 &lt;/div&gt;
@@ -1632,10 +1646,24 @@ In&amp;nbsp;[4]:
 
 
 &lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="box-flex1 output_subarea output_pyerr"&gt;
+&lt;pre&gt;
+&lt;span class="ansired"&gt;---------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="ansired"&gt;NameError&lt;/span&gt;                                 Traceback (most recent call last)
+&lt;span class="ansigreen"&gt;&amp;lt;ipython-input-4-8a0a7bf658c3&amp;gt;&lt;/span&gt; in &lt;span class="ansicyan"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;&lt;span class="ansiblue"&gt;()&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     10&lt;/span&gt; &lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     11&lt;/span&gt; &lt;span class="ansired"&gt;## For comparison&lt;/span&gt;&lt;span class="ansiblue"&gt;&lt;/span&gt;&lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;---&amp;gt; 12&lt;/span&gt;&lt;span class="ansired"&gt; &lt;/span&gt;M2 &lt;span class="ansiblue"&gt;=&lt;/span&gt; sqrt&lt;span class="ansiblue"&gt;(&lt;/span&gt;I&lt;span class="ansiblue"&gt;**&lt;/span&gt;&lt;span class="ansicyan"&gt;2&lt;/span&gt; &lt;span class="ansiblue"&gt;+&lt;/span&gt; J&lt;span class="ansiblue"&gt;**&lt;/span&gt;&lt;span class="ansicyan"&gt;2&lt;/span&gt;&lt;span class="ansiblue"&gt;)&lt;/span&gt;&lt;span class="ansiblue"&gt;&lt;/span&gt;
+&lt;span class="ansigreen"&gt;     13&lt;/span&gt; &lt;span class="ansigreen"&gt;print&lt;/span&gt; &lt;span class="ansiblue"&gt;&amp;quot;M2 = %10.5f&amp;quot;&lt;/span&gt; &lt;span class="ansiblue"&gt;%&lt;/span&gt;M2&lt;span class="ansiblue"&gt;&lt;/span&gt;
+
+&lt;span class="ansired"&gt;NameError&lt;/span&gt;: name &amp;apos;sqrt&amp;apos; is not defined&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="hbox output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
 &lt;div class="box-flex1 output_subarea output_stream output_stdout"&gt;
 &lt;pre&gt;
 M =   12.00000
-M2 =   11.40175
 
 &lt;/pre&gt;
 &lt;/div&gt;
@@ -1646,9 +1674,37 @@ M2 =   11.40175
 
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Many-combinations-of-\(A\)-and-\(B\)-are-provided-in-scientific-litterature,-yielding-various-accuracies-for-estimating-\(M\).-All-these-algorithms-are-open-to-modification-and-experimentation.-This-will-make-them-more-accurate-and-computationally-expensive,-or-less-accurate-and-computationally-less-demanding.-Your-accuracy-and-data-throughput-needs-determine-the-path-you-take-to-a-root-of-less-evil.-Further-reading-about-this-subject-can-be-suggested-here:-A-Root-Less-Evil---DSP-tips-&amp;amp;-tricks-Lastly,-a-small-piece-of-square-root-code-is-submitted."&gt;Many combinations of &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; are provided in scientific litterature, yielding various accuracies for estimating &lt;span class="math"&gt;\(M\)&lt;/span&gt;. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil. Further reading about this subject can be suggested here: &lt;a href="https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=2&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0CCcQFjAB&amp;amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;amp;bvm=bv.72676100,d.bGQ"&gt;A Root Less Evil - DSP tips &amp;amp; tricks&lt;/a&gt; Lastly, a small piece of square root code is submitted.&lt;a class="anchor-link" href="#Many-combinations-of-\(A\)-and-\(B\)-are-provided-in-scientific-litterature,-yielding-various-accuracies-for-estimating-\(M\).-All-these-algorithms-are-open-to-modification-and-experimentation.-This-will-make-them-more-accurate-and-computationally-expensive,-or-less-accurate-and-computationally-less-demanding.-Your-accuracy-and-data-throughput-needs-determine-the-path-you-take-to-a-root-of-less-evil.-Further-reading-about-this-subject-can-be-suggested-here:-A-Root-Less-Evil---DSP-tips-&amp;amp;-tricks-Lastly,-a-small-piece-of-square-root-code-is-submitted."&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Many combinations of &lt;span class="math"&gt;\(A\)&lt;/span&gt; and &lt;span class="math"&gt;\(B\)&lt;/span&gt; are provided in scientific litterature, yielding various accuracies for estimating &lt;span class="math"&gt;\(M\)&lt;/span&gt;. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil.&lt;/p&gt;
+&lt;p&gt;Further reading about this subject can be suggested here:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=2&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0CCcQFjAB&amp;amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;amp;bvm=bv.72676100,d.bGQ"&gt;A Root Less Evil - DSP tips &amp;amp; tricks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Lastly, a small piece of square root code is submitted.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/p&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[4]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell vbox"&gt;
+&lt;div class="input hbox"&gt;
+&lt;div class="prompt input_prompt"&gt;
+In&amp;nbsp;[]:
+&lt;/div&gt;
+&lt;div class="input_area box-flex1"&gt;
+&lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/p&gt;
 &lt;figure class='code'&gt;
 &lt;figcaption&gt;&lt;span&gt;My Sqrt mysqrt.py&lt;/span&gt; &lt;a href='/downloads/code/mysqrt.py'&gt;download&lt;/a&gt;&lt;/figcaption&gt;
 

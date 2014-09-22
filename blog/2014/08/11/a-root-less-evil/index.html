@@ -1814,7 +1814,7 @@ jQuery(document).ready(function($) {
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[1]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
@@ -1927,10 +1927,24 @@ In&nbsp;[3]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">NameError</span>                                 Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-3-1527ba320b12&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">     10</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M = %10.5f&quot;</span> <span class="ansiblue">%</span>M<span class="ansiblue"></span>
+<span class="ansigreen">     11</span> <span class="ansiblue"></span>
+<span class="ansigreen">---&gt; 12</span><span class="ansired"> </span>M2 <span class="ansiblue">=</span> sqrt<span class="ansiblue">(</span>I<span class="ansiblue">**</span><span class="ansicyan">2</span> <span class="ansiblue">+</span> J<span class="ansiblue">**</span><span class="ansicyan">2</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">     13</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M = %10.5f&quot;</span> <span class="ansiblue">%</span>M2<span class="ansiblue"></span>
+
+<span class="ansired">NameError</span>: name &apos;sqrt&apos; is not defined</pre>
+</div>
+</div>
+
+<div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 M =   11.71875
-M =   11.40175
 
 </pre>
 </div>
@@ -1971,10 +1985,24 @@ In&nbsp;[4]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">NameError</span>                                 Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-4-8a0a7bf658c3&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">     10</span> <span class="ansiblue"></span>
+<span class="ansigreen">     11</span> <span class="ansired">## For comparison</span><span class="ansiblue"></span><span class="ansiblue"></span>
+<span class="ansigreen">---&gt; 12</span><span class="ansired"> </span>M2 <span class="ansiblue">=</span> sqrt<span class="ansiblue">(</span>I<span class="ansiblue">**</span><span class="ansicyan">2</span> <span class="ansiblue">+</span> J<span class="ansiblue">**</span><span class="ansicyan">2</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">     13</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M2 = %10.5f&quot;</span> <span class="ansiblue">%</span>M2<span class="ansiblue"></span>
+
+<span class="ansired">NameError</span>: name &apos;sqrt&apos; is not defined</pre>
+</div>
+</div>
+
+<div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 M =   12.00000
-M2 =   11.40175
 
 </pre>
 </div>
@@ -1985,9 +2013,37 @@ M2 =   11.40175
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Many-combinations-of-\(A\)-and-\(B\)-are-provided-in-scientific-litterature,-yielding-various-accuracies-for-estimating-\(M\).-All-these-algorithms-are-open-to-modification-and-experimentation.-This-will-make-them-more-accurate-and-computationally-expensive,-or-less-accurate-and-computationally-less-demanding.-Your-accuracy-and-data-throughput-needs-determine-the-path-you-take-to-a-root-of-less-evil.-Further-reading-about-this-subject-can-be-suggested-here:-A-Root-Less-Evil---DSP-tips-&amp;-tricks-Lastly,-a-small-piece-of-square-root-code-is-submitted.">Many combinations of <span class="math">\(A\)</span> and <span class="math">\(B\)</span> are provided in scientific litterature, yielding various accuracies for estimating <span class="math">\(M\)</span>. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil. Further reading about this subject can be suggested here: <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0CCcQFjAB&amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;bvm=bv.72676100,d.bGQ">A Root Less Evil - DSP tips &amp; tricks</a> Lastly, a small piece of square root code is submitted.<a class="anchor-link" href="#Many-combinations-of-\(A\)-and-\(B\)-are-provided-in-scientific-litterature,-yielding-various-accuracies-for-estimating-\(M\).-All-these-algorithms-are-open-to-modification-and-experimentation.-This-will-make-them-more-accurate-and-computationally-expensive,-or-less-accurate-and-computationally-less-demanding.-Your-accuracy-and-data-throughput-needs-determine-the-path-you-take-to-a-root-of-less-evil.-Further-reading-about-this-subject-can-be-suggested-here:-A-Root-Less-Evil---DSP-tips-&amp;-tricks-Lastly,-a-small-piece-of-square-root-code-is-submitted.">&#182;</a></h2>
+<p>Many combinations of <span class="math">\(A\)</span> and <span class="math">\(B\)</span> are provided in scientific litterature, yielding various accuracies for estimating <span class="math">\(M\)</span>. All these algorithms are open to modification and experimentation. This will make them more accurate and computationally expensive, or less accurate and computationally less demanding. Your accuracy and data throughput needs determine the path you take to a root of less evil.</p>
+<p>Further reading about this subject can be suggested here:</p>
+<p><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0CCcQFjAB&amp;url=https%3A%2F%2Fminds.wisconsin.edu%2Fbitstream%2Fhandle%2F1793%2F9200%2Ffile_1.pdf%3Fsequence%3D1&amp;ei=X4zmU6P4E6iaygOeyoHIDQ&amp;usg=AFQjCNFNnWHNdL0lFLmMT2FOB-fYjE71sg&amp;sig2=8mcC-PpsDU0SYVcafYsDHg&amp;bvm=bv.72676100,d.bGQ">A Root Less Evil - DSP tips &amp; tricks</a></p>
+<p>Lastly, a small piece of square root code is submitted.</p>
 </div>
-</p>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[4]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb">
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb">
+</pre></div>
+
+</div>
+</div>
+
+</div></p>
 <figure class='code'>
 <figcaption><span>My Sqrt mysqrt.py</span> <a href='/downloads/code/mysqrt.py'>download</a></figcaption>
 
