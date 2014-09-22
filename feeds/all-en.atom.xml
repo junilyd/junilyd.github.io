@@ -51,7 +51,7 @@ Send &amp;apos;exit&amp;apos; command to kill the server
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[12]:
+In&amp;nbsp;[7]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;matlab&lt;/span&gt;
@@ -201,7 +201,9 @@ In&amp;nbsp;[17]:
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;matlab&lt;/span&gt;
 &lt;span class="n"&gt;figure&lt;/span&gt;
-&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;p1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;w1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;83&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+&lt;span class="n"&gt;Ximodel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1459,7 +1461,7 @@ QmCC
 &lt;/script&gt;
 </summary></entry><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/11/a-root-less-evil/" rel="alternate"></link><updated>2014-08-11T23:04:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-11:blog/2014/08/11/a-root-less-evil/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. &lt;span class="math"&gt;\[
+&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. \( x=5  \) &lt;span class="math"&gt;\[
 \begin{equation}
     x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41
 \end{equation}
@@ -1473,7 +1475,7 @@ QmCC
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
 &lt;div class="prompt input_prompt"&gt;
-In&amp;nbsp;[1]:
+In&amp;nbsp;[2]:
 &lt;/div&gt;
 &lt;div class="input_area box-flex1"&gt;
 &lt;div class="highlight-ipynb"&gt;&lt;pre class="ipynb"&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;25.&lt;/span&gt;
