@@ -1461,7 +1461,7 @@ QmCC
 &lt;/script&gt;
 </summary></entry><entry><title>A root less evil</title><link href="http://junilyd.github.io/blog/2014/08/11/a-root-less-evil/" rel="alternate"></link><updated>2014-08-11T23:04:00-03:00</updated><author><name>junilyd</name></author><id>tag:junilyd.github.io,2014-08-11:blog/2014/08/11/a-root-less-evil/</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. \( x=5  \) &lt;span class="math"&gt;\[
+&lt;p&gt;Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. \( x=7  \) &lt;span class="math"&gt;\[
 \begin{equation}
     x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41
 \end{equation}
