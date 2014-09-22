@@ -1800,11 +1800,8 @@ jQuery(document).ready(function($) {
 
   <div class="entry-content"><p>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e. \( x=7  \) <span class="math">\[
-\begin{equation}
-    x^2 − 2 = 0 \Rightarrow x = \sqrt{2} \approx 1.41
-\end{equation}
-\]</span></p>
+<p>Since it sometimes is required to calculate the square root of some number. This job is straight forward by solving the 2nd order equation for the square root of 2 i.e.</p>
+
 <p>However, when we need to define how a computer is suppose to calculate the square root, we can use numerical methods. I finished my B.Sc.EE project this semester. The project theme was Embedded Signal Processing with the design and implementation of a GFSK-Demodulator for Satellite Communication, in a fixed point DSP. For the design it was necessary to calculate the Magnitude <span class="math">\[M\]</span> of a complex number <span class="math">\(I + jQ\)</span> which is defined as <span class="math">\(M = \sqrt{I^2 + Q^2}\)</span>. Therefore, I came across several interesting algorithms for approximation of the square root in fixed point arithmetic. I believe this is an obvious subject for my first blog post here, where I will demonstrate some of these in Python, starting with Newtons Method.</p>
 <p>Newtons Method is an iterative approach, with an initial guess, <span class="math">\(s\)</span>, as seen here</p>
 <p><span class="math">\[ s = \frac{1}{2}(s + x/s)\]</span></p>
@@ -1814,7 +1811,7 @@ jQuery(document).ready(function($) {
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
@@ -1857,7 +1854,7 @@ After 6 iterations, s =    5.000000000053722
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">x</span> <span class="o">=</span> <span class="mf">25.</span>
@@ -1902,10 +1899,11 @@ After 6 iterations, s =    5.000000000000000
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
+In&nbsp;[12]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mf">3.</span>
+<div class="highlight-ipynb"><pre class="ipynb"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">I</span> <span class="o">=</span> <span class="mf">3.</span>
 <span class="n">J</span> <span class="o">=</span> <span class="mf">11.</span>
 <span class="n">A</span> <span class="o">=</span> <span class="mi">15</span><span class="o">/</span><span class="mf">16.</span>
 <span class="n">B</span> <span class="o">=</span> <span class="mi">15</span><span class="o">/</span><span class="mf">32.</span>
@@ -1915,7 +1913,7 @@ In&nbsp;[3]:
 <span class="k">else</span><span class="p">:</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">B</span><span class="o">*</span><span class="n">I</span> <span class="o">+</span> <span class="n">A</span><span class="o">*</span><span class="n">J</span>
 <span class="k">print</span> <span class="s">&quot;M = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M</span>
-<span class="n">M2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">M2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;M = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M2</span>
 </pre></div>
 
@@ -1927,24 +1925,10 @@ In&nbsp;[3]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">NameError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-3-1527ba320b12&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">     10</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M = %10.5f&quot;</span> <span class="ansiblue">%</span>M<span class="ansiblue"></span>
-<span class="ansigreen">     11</span> <span class="ansiblue"></span>
-<span class="ansigreen">---&gt; 12</span><span class="ansired"> </span>M2 <span class="ansiblue">=</span> sqrt<span class="ansiblue">(</span>I<span class="ansiblue">**</span><span class="ansicyan">2</span> <span class="ansiblue">+</span> J<span class="ansiblue">**</span><span class="ansicyan">2</span><span class="ansiblue">)</span><span class="ansiblue"></span>
-<span class="ansigreen">     13</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M = %10.5f&quot;</span> <span class="ansiblue">%</span>M2<span class="ansiblue"></span>
-
-<span class="ansired">NameError</span>: name &apos;sqrt&apos; is not defined</pre>
-</div>
-</div>
-
-<div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 M =   11.71875
+M =   11.40175
 
 </pre>
 </div>
@@ -1960,7 +1944,7 @@ M =   11.71875
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[14]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="n">I</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1973,7 +1957,7 @@ In&nbsp;[4]:
     <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">J</span><span class="o">-</span><span class="n">J4</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">I</span><span class="o">-</span><span class="n">I5</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;M = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M</span>
 <span class="c">## For comparison</span>
-<span class="n">M2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">M2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;M2 = </span><span class="si">%10.5f</span><span class="s">&quot;</span> <span class="o">%</span><span class="k">M2</span>
 </pre></div>
 
@@ -1985,24 +1969,10 @@ In&nbsp;[4]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">NameError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-4-8a0a7bf658c3&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">     10</span> <span class="ansiblue"></span>
-<span class="ansigreen">     11</span> <span class="ansired">## For comparison</span><span class="ansiblue"></span><span class="ansiblue"></span>
-<span class="ansigreen">---&gt; 12</span><span class="ansired"> </span>M2 <span class="ansiblue">=</span> sqrt<span class="ansiblue">(</span>I<span class="ansiblue">**</span><span class="ansicyan">2</span> <span class="ansiblue">+</span> J<span class="ansiblue">**</span><span class="ansicyan">2</span><span class="ansiblue">)</span><span class="ansiblue"></span>
-<span class="ansigreen">     13</span> <span class="ansigreen">print</span> <span class="ansiblue">&quot;M2 = %10.5f&quot;</span> <span class="ansiblue">%</span>M2<span class="ansiblue"></span>
-
-<span class="ansired">NameError</span>: name &apos;sqrt&apos; is not defined</pre>
-</div>
-</div>
-
-<div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 M =   12.00000
+M2 =   11.40175
 
 </pre>
 </div>
@@ -2098,37 +2068,7 @@ In&nbsp;[]:
 </pre></div>
 
 
-</figure><script type= "text/javascript">
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-</script>
-</div>
+</figure></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
