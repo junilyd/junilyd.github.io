@@ -6,15 +6,17 @@ w0 = 2*pi*f0;
 dur = L;
 endNoteLength = 3;
 t=1/fs:1/fs:dur+endNoteLength;
-ampFactor = 1/40;
+ampFactor = 1;
 
 x = [zeros(fs*(L+endNoteLength),1)];
 for i=1:L
-    x = x + [zeros(fs*i,1); i*ampFactor*sin(w0*i*(1/fs:1/fs:(L-i)+endNoteLength))'];
+    x = x + [zeros(fs*i,1); sin(w0*i*(1/fs:1/fs:(L-i)+endNoteLength))'];
 end
 
 x=x/max(x);
 sound(x,fs)
+
+
 
 figure(1)
 subplot(211); plot(t,x);
