@@ -1,4 +1,4 @@
-%% Startup file to load paths
+%% Startup file to load paths.
 
 set(0,'defaultAxesTitleFontWeight','normal');
 set(0,'DefaultFigureColormap',feval('jet'));
