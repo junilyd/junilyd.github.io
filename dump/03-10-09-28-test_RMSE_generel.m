@@ -9,7 +9,7 @@
 %
 %  To get started choose your variable to test and input inot testVariable!
 %  (maybe change the name of your output file)
-%  That is it!
+%  That is it !
 %
 clear f; clear x;clear sig;clear f0;clear betaCoeff;clear X;
 clear f0Hat;clear f0Area;clear SE;clear MSE;clear RMSE;clear testVariable;
