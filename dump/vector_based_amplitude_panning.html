@@ -1,0 +1,320 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Virtual Sound Source Positioning Using Vector Base</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-12"><meta name="DC.source" content="vector_based_amplitude_panning.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Virtual Sound Source Positioning Using Vector Base</h1><!--introduction--><p>The listener is situated equidistant to each speaker. If each speaker has a base angle of <img src="vector_based_amplitude_panning_eq01011064520810720073.png" alt="$\Phi_0 = 45^{\circ}$"> The panning span is [-45 45] degrees from right to left speaker.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#7">Vector definition</a></li><li><a href="#13">EXAMPLE with two simulated harmonic signals.</a></li><li><a href="#14">We simulate a signal with two sources with natural guitar amplitudes</a></li><li><a href="#15">We pan the signals to each side</a></li><li><a href="#16">Pitch and complex amplitude estimation</a></li><li><a href="#20">Angle Estimation</a></li><li><a href="#21">Subtract estimate from source and iterate</a></li><li><a href="#23">Finally we have estimated the two panning angles</a></li></ul></div><pre class="codeinput">phi0 = 45 * pi/180;
+</pre><p>Seen from the listener a pan angle <img src="vector_based_amplitude_panning_eq01908532921846404702.png" alt="$\Phi$">. is shifted to be the angle <img src="vector_based_amplitude_panning_eq08065255122523381387.png" alt="$\Theta = \Phi + \Phi_0$"> from the listeners position to the virtual sound positioning.</p><pre class="codeinput">panAngle = 30
+phi = panAngle * pi/180;
+theta = phi + phi0;
+</pre><pre class="codeoutput">panAngle =
+    30
+</pre><p><img vspace="5" hspace="5" src="figur1.png" alt=""> </p><p>The trigonometric functions are most often used for panning gain since their power is unity as <img src="vector_based_amplitude_panning_eq00012325690823238662.png" alt="$1 = \cos^2 x + sin^2 x$"></p><pre class="codeinput">g1 = cos(theta);
+g2 = sin(theta);
+g = [g1 g2]';
+</pre><p>If the source is moving during playback the sound power can be set to a constant as <img src="vector_based_amplitude_panning_eq02997164298191362863.png" alt="$C = g_1^2+g_2^2$">.</p><pre class="codeinput">C = 1;
+gScaled = sqrt(C)*g/sum(g.^2)
+</pre><pre class="codeoutput">gScaled =
+    0.2588
+    0.9659
+</pre><h2>Vector definition<a name="7"></a></h2><p>The base Vectors are defined by unit-length vectors. <img src="vector_based_amplitude_panning_eq10817116784286670662.png" alt="$l_1$"> and <img src="vector_based_amplitude_panning_eq11695167239558615666.png" alt="$l_2$">, which are pointing toward loudspeakers 1 and 2, respectively.</p><pre class="codeinput">l1 = [-cos(phi0) sin(phi0)]';
+l2 = [ cos(phi0) sin(phi0)]';
+</pre><p>The unit-length vector <img src="vector_based_amplitude_panning_eq09941021013676836398.png" alt="$p$"> is pointing toward the virtual sound source position The virtual source can be treated as a linear combination of loudspeaker vectors with gains g1 and g2 by multiplying the gain <img src="vector_based_amplitude_panning_eq07585311203459331132.png" alt="$g$"> and the <img src="vector_based_amplitude_panning_eq11904963258706611165.png" alt="$L$"> matrix</p><pre class="codeinput"><span class="comment">% $p^T = g^TL$</span>
+L = [l1 l2];
+pT = gScaled'*L
+</pre><pre class="codeoutput">pT =
+    0.5000    0.8660
+</pre><p><img vspace="5" hspace="5" src="figur3.png" alt=""> </p><p>Under these assumptions for a given panning angle <img src="vector_based_amplitude_panning_eq12685105922891341491.png" alt="$\Theta$"> is found as: $\Hat{\Theta} = \Arctan{p_1/p_2}</p><pre class="codeinput">estimatedAngle = atan(pT(1)/pT(2))*180/pi
+</pre><pre class="codeoutput">estimatedAngle =
+   30.0000
+</pre><p>The described panning model is based on <a href="http://lib.tkk.fi/Diss/2001/isbn9512255324/article1.pdf">http://lib.tkk.fi/Diss/2001/isbn9512255324/article1.pdf</a> by Ville Pulkki)</p><h2>EXAMPLE with two simulated harmonic signals.<a name="13"></a></h2><h2>We simulate a signal with two sources with natural guitar amplitudes<a name="14"></a></h2><pre class="codeinput">clear <span class="string">all</span>;
+trueAngle1 = 23.45
+trueAngle2 = -32.46
+fs = 44100;
+duration = 0.04;
+
+load(<span class="string">'/Users/home/Documents/MATLAB/code/test_programs/source_separation/betaMean_Martin_40ms.mat'</span>);
+load(<span class="string">'/Users/home/Documents/MATLAB/code/test_programs/source_separation/a_hat_file_used_in_test_on_L.mat'</span>);
+s500 = smc_sum_of_sines(smc_beta_model(500,0,18), abs(aHat(:,1,3)), 18, duration, fs );
+s1500 = smc_sum_of_sines(smc_beta_model(700,0,7), abs(aHat(:,1,3)), 7, duration, fs );
+</pre><pre class="codeoutput">trueAngle1 =
+   23.4500
+trueAngle2 =
+  -32.4600
+</pre><h2>We pan the signals to each side<a name="15"></a></h2><pre class="codeinput">[g1] = VBAP2(trueAngle1)
+[g2] = VBAP2(trueAngle2)
+
+s1 = s500*g1(1) + s1500*g2(1);
+s2 = s500*g1(2) + s1500*g2(2);
+s = [s1 s2];
+
+    figure;
+        subplot(211); smc_spectrogram(s1,fs); xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(s2,fs); xlim([0.02 0.04]); ylim([0 6e3]);
+</pre><pre class="codeoutput">g1 =
+    0.3673    0.9301
+g2 =
+    0.9761    0.2171
+</pre><img vspace="5" hspace="5" src="vector_based_amplitude_panning_01.png" alt=""> <h2>Pitch and complex amplitude estimation<a name="16"></a></h2><p>Transform to analytic</p><pre class="codeinput">x1 = analytic(s1); fs2=fs/2;
+x2 = analytic(s2); fs2=fs/2;
+</pre><p>estimate the first pitch with joint ANLS</p><pre class="codeinput">[w0,L] = joint_anls(x1, [1e-3 0.25],2^12);
+pitchEstimateJointANLS = w0*fs/4/pi;
+</pre><pre class="codeoutput">L =
+     6
+w0 =
+    0.1994
+</pre><pre>Refine the pitch estimates</pre><pre class="codeinput">[f, X1] = smc_fft(s1,fs,2^22);
+[pitchEstimateL CL]= smc_ANLS(X1, pitchEstimateJointANLS*[0.97 1.03], L, fs);
+[f, X2] = smc_fft(s2,fs,2^22);
+[pitchEstimateR CR] = smc_ANLS(X2, pitchEstimateJointANLS*[0.93 1.03], L, fs);
+<span class="keyword">if</span> CR&gt;CL
+    pitchEstimate = pitchEstimateR
+<span class="keyword">else</span>
+    pitchEstimate = pitchEstimateL
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">pitchEstimate =
+  699.9572
+</pre><p>Estimate complex amplitudes for each side from estimated pitch and model order using LS.</p><pre class="codeinput">Z = smc_Z(pitchEstimate, length(x1), fs2, L);
+aLeft  = inv(Z'*Z)*Z'*x1;
+aRight = inv(Z'*Z)*Z'*x2;
+</pre><h2>Angle Estimation<a name="20"></a></h2><p>finally we can estimate the angle from the estimated energy contained in the amplitudes.</p><pre class="codeinput">g1 = sum(abs(aLeft));
+g2 = sum(abs(aRight));
+phi0 = 45 * pi/180;
+l1 = [-cos(phi0) sin(phi0)]';
+l2 = [ cos(phi0) sin(phi0)]';
+L = [l1 l2];
+g = [g1 g2]'; C = 1;
+gScaled = sqrt(C)*g/sqrt(g1^2+g2^2);
+pT = gScaled'*L;
+estimatedAngle1 = atan(pT(1)/pT(2))*180/pi;
+</pre><h2>Subtract estimate from source and iterate<a name="21"></a></h2><p>We model the signals in real space time domain and subtract them from the given input.</p><pre class="codeinput">x1Hat = Z*aLeft;
+x2Hat = Z*aRight;
+sL = ianalytic(x1-x1Hat);
+sR = ianalytic(x2-x2Hat);
+<span class="comment">%</span>
+    figure;
+        subplot(211); smc_spectrogram(sL,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(sR,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+</pre><img vspace="5" hspace="5" src="vector_based_amplitude_panning_02.png" alt=""> <p>We estimate the next source with the same procedure.</p><pre class="codeinput">[estimatedAngle2 , sL, sR] = smc_angle_estimator([sL sR],fs);
+
+    figure;
+        subplot(211); smc_spectrogram(sL,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(sR,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+</pre><pre class="codeoutput">L =
+    10
+w0 =
+    0.1427
+g =
+    0.4113
+    1.0414
+</pre><img vspace="5" hspace="5" src="vector_based_amplitude_panning_03.png" alt=""> <h2>Finally we have estimated the two panning angles<a name="23"></a></h2><pre class="codeinput">error1 = abs(estimatedAngle1-trueAngle2)
+error2 = abs(estimatedAngle2-trueAngle1)
+</pre><pre class="codeoutput">error1 =
+    0.1768
+error2 =
+    0.0020
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%  Virtual Sound Source Positioning Using Vector Base 
+% The listener is situated equidistant to each speaker.
+% If each speaker has a base angle of $\Phi_0 = 45^{\circ}$ 
+% The panning span is [-45 45] degrees from right to left speaker.
+%%
+phi0 = 45 * pi/180;  
+%% 
+% Seen from the listener a pan angle $\Phi$.
+% is shifted to be the angle $\Theta = \Phi + \Phi_0$ 
+% from the listeners position to the virtual sound positioning. 
+%%
+panAngle = 30
+phi = panAngle * pi/180;
+theta = phi + phi0;
+%%
+% <<figur1.png>>
+%%
+% The trigonometric functions are most often used for panning gain
+% since their power is unity as $1 = \cos^2 x + sin^2 x$
+g1 = cos(theta);
+g2 = sin(theta);
+g = [g1 g2]';
+%%
+% If the source is moving during playback the sound power can be set 
+% to a constant as $C = g_1^2+g_2^2$.
+C = 1;
+gScaled = sqrt(C)*g/sum(g.^2)
+%% Vector definition 
+% The base Vectors are defined by unit-length vectors. 
+% $l_1$ and $l_2$, 
+% which are pointing toward loudspeakers 1 and 2, respectively.
+%%
+l1 = [-cos(phi0) sin(phi0)]';
+l2 = [ cos(phi0) sin(phi0)]';
+%%
+% The unit-length vector $p$ is pointing toward the virtual sound source position
+% The virtual source can be treated as a linear combination of loudspeaker vectors
+% with gains g1 and g2
+% by multiplying the gain $g$ and the $L$ matrix
+
+% $p^T = g^TL$
+L = [l1 l2];
+pT = gScaled'*L
+%%
+% <<figur3.png>>
+%%
+% Under these assumptions for a given panning angle $\Theta$ is found as:
+% $\Hat{\Theta} = \Arctan{p_1/p_2}
+estimatedAngle = atan(pT(1)/pT(2))*180/pi
+%% 
+% The described panning model is based on http://lib.tkk.fi/Diss/2001/isbn9512255324/article1.pdf by Ville Pulkki)
+%%% EXAMPLE with two simulated harmonic signals.
+%% We simulate a signal with two sources with natural guitar amplitudes
+%
+clear all; 
+trueAngle1 = 23.45
+trueAngle2 = -32.46
+fs = 44100; 
+duration = 0.04;
+ 
+load('/Users/home/Documents/MATLAB/code/test_programs/source_separation/betaMean_Martin_40ms.mat');
+load('/Users/home/Documents/MATLAB/code/test_programs/source_separation/a_hat_file_used_in_test_on_L.mat');
+s500 = smc_sum_of_sines(smc_beta_model(500,0,18), abs(aHat(:,1,3)), 18, duration, fs );
+s1500 = smc_sum_of_sines(smc_beta_model(700,0,7), abs(aHat(:,1,3)), 7, duration, fs );
+
+%% We pan the signals to each side
+[g1] = VBAP2(trueAngle1)
+[g2] = VBAP2(trueAngle2)
+
+s1 = s500*g1(1) + s1500*g2(1);
+s2 = s500*g1(2) + s1500*g2(2);
+s = [s1 s2];
+
+    figure; 
+        subplot(211); smc_spectrogram(s1,fs); xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(s2,fs); xlim([0.02 0.04]); ylim([0 6e3]);
+
+%% Pitch and complex amplitude estimation 
+% Transform to analytic
+x1 = analytic(s1); fs2=fs/2;
+x2 = analytic(s2); fs2=fs/2;
+%%
+% estimate the first pitch with joint ANLS
+[w0,L] = joint_anls(x1, [1e-3 0.25],2^12);
+pitchEstimateJointANLS = w0*fs/4/pi;
+%%
+%  Refine the pitch estimates
+[f, X1] = smc_fft(s1,fs,2^22);
+[pitchEstimateL CL]= smc_ANLS(X1, pitchEstimateJointANLS*[0.97 1.03], L, fs);
+[f, X2] = smc_fft(s2,fs,2^22);
+[pitchEstimateR CR] = smc_ANLS(X2, pitchEstimateJointANLS*[0.93 1.03], L, fs);
+if CR>CL
+    pitchEstimate = pitchEstimateR
+else 
+    pitchEstimate = pitchEstimateL
+end
+%% 
+% Estimate complex amplitudes for each side from estimated pitch and model
+% order using LS.
+Z = smc_Z(pitchEstimate, length(x1), fs2, L);
+aLeft  = inv(Z'*Z)*Z'*x1;
+aRight = inv(Z'*Z)*Z'*x2;
+%% Angle Estimation
+% finally we can estimate the angle from the estimated energy contained in
+% the amplitudes.
+g1 = sum(abs(aLeft));
+g2 = sum(abs(aRight));
+phi0 = 45 * pi/180;
+l1 = [-cos(phi0) sin(phi0)]';
+l2 = [ cos(phi0) sin(phi0)]';
+L = [l1 l2];
+g = [g1 g2]'; C = 1;
+gScaled = sqrt(C)*g/sqrt(g1^2+g2^2);
+pT = gScaled'*L;
+estimatedAngle1 = atan(pT(1)/pT(2))*180/pi;
+%% Subtract estimate from source and iterate
+% We model the signals in real space time domain and subtract them from the
+% given input.
+x1Hat = Z*aLeft;
+x2Hat = Z*aRight;
+sL = ianalytic(x1-x1Hat);
+sR = ianalytic(x2-x2Hat);
+% 
+    figure; 
+        subplot(211); smc_spectrogram(sL,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(sR,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+%%
+% We estimate the next source with the same procedure.
+[estimatedAngle2 , sL, sR] = smc_angle_estimator([sL sR],fs);
+
+    figure; 
+        subplot(211); smc_spectrogram(sL,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+        subplot(212); smc_spectrogram(sR,fs);xlim([0.02 0.04]); ylim([0 6e3]);
+
+%% Finally we have estimated the two panning angles
+error1 = abs(estimatedAngle1-trueAngle2)
+error2 = abs(estimatedAngle2-trueAngle1)
+
+##### SOURCE END #####
+--></body></html>
